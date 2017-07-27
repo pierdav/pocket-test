@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+	<script
+  src="http://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <style>
+        body { padding-top:50px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Register</h1>
+			<form id="register-form" class="text-left">
+			<div class="main-register-form">
+				<div class="register-group">
+					<div class="register-group">
+						<label for="email" class="sr-only">Username</label>
+						<input type="text" class="form-control" id="email" name="email" placeholder="email">
+					</div>
+				</div>
+				<button type="button" class="register-button" onclick="register()">Register</button>
+			</div>
+			<div class="etc-register-form">
+				<p><a href="/login">login</a></p>
+			</div>
+		</form>
+        </div>
+    </div>
+<script>
+function register()
+{
+	 $.ajax(
+
+            {
+                url: "/register",
+                type: "POST",
+                data: JSON.stringify({ email: $('#email').val() }),
+                dataType: 'json',
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                success: function(data) {
+					if(data.status=="ok")
+					{
+						alert("An e-mail has been sent with your password");
+					}
+					else
+					{
+						alert("Your e-mail is invalid");
+					}
+                }
+            }
+        );
+
+		
+}
+</script>
+</body>
+</html>

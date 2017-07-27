@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+   <script
+  src="http://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <style>
+        body { padding-top:50px; }
+    </style>
+    <style>
+        body { padding-top:50px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Login</h1>
+			<form id="login-form" class="text-left">
+			<div class="main-login-form">
+				<div class="login-group">
+					<div class="login-group">
+						<label for="email" class="sr-only">Username</label>
+						<input type="text" class="form-control" id="email" name="email" placeholder="email">
+					</div>
+					<div class="login-group">
+						<label for="password" class="sr-only">Password</label>
+						<input type="password" class="form-control" id="password" name="password" placeholder="password">
+					</div>
+				</div>
+				<button type="button" class="login-button" onclick="login()">Login</button>
+			</div>
+			<div class="etc-login-form">
+				<p><a href="/register">register</a></p>
+			</div>
+		</form>
+        </div>
+    </div>
+<script>
+function login()
+{
+	 $.ajax(
+
+            {
+                url: "/login",
+                type: "POST",
+                data: JSON.stringify({ email: $('#email').val(), password: $('#password').val() }),
+                dataType: 'json',
+                async: false,
+                contentType: 'application/json; charset=utf-8',
+                success: function(data) {
+					if(data.status=="ok")
+					{
+						alert("You are logged");
+					}
+					else
+					{
+						alert("Bad e-mail/password");
+					}
+                }
+            }
+        );
+
+		
+}
+</script>
+</body>
+</html>
