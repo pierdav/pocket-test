@@ -20,7 +20,7 @@ npm install
 var from = {email:'xxxxx@gmail.com', pass:'xxxxx'};
 
 ```
-Alse make sure to enable less secure apps in google account : https://www.google.com/settings/security/lesssecureapps
+Also make sure to enable less secure apps in google account : https://www.google.com/settings/security/lesssecureapps
 
 ## Launch server
 ```shell
@@ -36,13 +36,13 @@ Open browser and connect to http://localhost:8000/login
 
 
 ## Mocha test register
-run 
+kill server and run 
 ```shell
 mocha test/register.js --email=xxxx@xxx.xx
 ```
 
 ## Mocha test login
-run 
+kill server and run 
 ```shell
 mocha test/login.js --email=xxxx@xxx.xx --pswrd=xxxxx
 ```
